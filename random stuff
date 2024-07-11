@@ -1,0 +1,17 @@
+public void populateStudentFile() {
+    String studentInfo = age + "," + id + "," + firstname + "," + lastname + "," + phonenumber + "," + postcode;
+    try {
+        List<String> existingInfo = readStudentInfoFromFile();
+        existingInfo.add(studentInfo);
+
+        PrintWriter writer = new PrintWriter(new FileWriter(FILENAME));
+        for (String line : existingInfo) {
+            writer.println(line);
+        }
+        writer.close();
+
+        System.out.println("Student information populated to " + FILENAME);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
